@@ -1,18 +1,9 @@
   #!/bin/bash
 
   #######################################################
-  # VMARK-sitebackup v0.1
+  # git-sitebackup v0.1
   #######################################################
- 
-  #
-  # Full backup of website files, tool scripts and database content.
-  #
-  # A number of variables defining file location and database connection
-  # information must be set before this script will run.
-  #
-  # Files are copied to a local git repository and pushed up to github.
-  # All files are copied. 
-  # 
+
  
 
   #######################################################

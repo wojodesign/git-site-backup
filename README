@@ -1,0 +1,15 @@
+  #######################################################
+  # git-sitebackup v0.1
+  #######################################################
+ 
+  # Usage: backup.sh dbname dbuser dbpass webrootdir
+  # 
+  # Full backup of website files, tool scripts and database content.
+  #
+  # A number of variables defining file location and database connection
+  # information are sent as arguments
+  #
+  # Files are copied to a local git repository and pushed up to master repo.
+  # All files are copied. 
+  #
+  # Useful to setup cron to run daily and do automatic backups to master repo.
