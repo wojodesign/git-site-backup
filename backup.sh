@@ -11,62 +11,6 @@
   echo -e "\n git-sitebackup $version \n"
 
   #######################################################
-  # Grand Central... direct to the correct actions
-  # based on number of inputs
-  #######################################################
-
-
-  # only filepath present: do not backup dB and do not push to remote
-  if[$# -eq 1 ]; then
-	
-   
-	
-	  dir=$1
-	  commit_changes $dir
-	
-	
-	
-  # only filepath & remote branch present: do not backup dB, push to remote
-  elif[$# -eq 2 ]; then
-	
-	dir=$1
-	branch=$2
-	
-	commit_changes $dir
-	push_to_remote $dir $branch
-	
-	
-  # filepath and dB info present: backup both, do not push to remote
-  elif[$# -eq 4 ]; then
-	
-	dir=$1
-	dbname=$2
-	dbuser=$3
-	dbpass=$4
-	
-	dump_db $dir $dbname $dbuser $dbpass
-	commit_changes $dir 
-		
-  # all arguments present: backup files and db, push to remote
-  elif[$# -eq 5 ]; then
-    dir=$1
-	dbname=$2
-	dbuser=$3
-	dbpass=$4
-	branch=$5
-
-	dump_db $dir $dbname $dbuser $dbpass
-	commit_changes $dir 
-	push_to_remote $dir $branch
-
-  fi
-	
-  #cleanup and exit
-  cleanup
-	
-	
- 
-  #######################################################
   # sqldump database information
   #######################################################
   function dump_db {
@@ -132,10 +76,58 @@
   
 
   #######################################################
-  # Install 
-  #######################################################  
-  function install {
+  # Grand Central... direct to the correct actions
+  # based on number of inputs
+  #######################################################
 
-  }
+
+  # only filepath present: do not backup dB and do not push to remote
+  if [ $# -eq 1 ] ; then
+	
+   
+	
+	  dir=$1
+	  commit_changes $dir
+	
+	
+	
+  # only filepath & remote branch present: do not backup dB, push to remote
+  elif [ $# -eq 2 ]; then
+	
+	dir=$1
+	branch=$2
+	
+	commit_changes $dir
+	push_to_remote $dir $branch
+	
+	
+  # filepath and dB info present: backup both, do not push to remote
+  elif [ $# -eq 4 ]; then
+	
+	dir=$1
+	dbname=$2
+	dbuser=$3
+	dbpass=$4
+	
+	dump_db $dir $dbname $dbuser $dbpass
+	commit_changes $dir 
+		
+  # all arguments present: backup files and db, push to remote
+  elif [ $# -eq 5 ]; then
+    dir=$1
+	dbname=$2
+	dbuser=$3
+	dbpass=$4
+	branch=$5
+
+	dump_db $dir $dbname $dbuser $dbpass
+	commit_changes $dir 
+	push_to_remote $dir $branch
+
+  fi
+	
+  #cleanup and exit
+  cleanup
+
  
  
