@@ -3,7 +3,7 @@
   #######################################################
   # git-sitebackup 
   #######################################################
-  version = "0.1"
+  version= "0.1"
  
   #######################################################
   # Banner
@@ -21,7 +21,7 @@
 	
    
 	
-	  dir = $1
+	  dir= $1
 	  commit_changes $dir
 	
 	
@@ -29,8 +29,8 @@
   # only filepath & remote branch present: do not backup dB, push to remote
   elif[$# -eq 2 ]; then
 	
-	dir = $1
-	branch = $2
+	dir= $1
+	branch= $2
 	
 	commit_changes $dir
 	push_to_remote $dir $branch
@@ -39,21 +39,21 @@
   # filepath and dB info present: backup both, do not push to remote
   elif[$# -eq 4 ]; then
 	
-	dir = $1
-	dbname = $2
-	dbuser = $3
-	dbpass = $4
+	dir= $1
+	dbname= $2
+	dbuser= $3
+	dbpass= $4
 	
 	dump_db $dir $dbname $dbuser $dbpass
 	commit_changes $dir 
 		
   # all arguments present: backup files and db, push to remote
   elif[$# -eq 5 ]; then
-    dir = $1
-	dbname = $2
-	dbuser = $3
-	dbpass = $4
-	branch = $5
+    dir= $1
+	dbname= $2
+	dbuser= $3
+	dbpass= $4
+	branch= $5
 
 	dump_db $dir $dbname $dbuser $dbpass
 	commit_changes $dir 
@@ -70,10 +70,10 @@
   # sqldump database information
   #######################################################
   function dump_db {
-    dir = $1
-	dbname = $2
-	dbuser = $3
-	dbpass = $4
+    dir= $1
+	dbname= $2
+	dbuser= $3
+	dbpass= $4
    
     echo -e " .. sqldump'ing database:"
     echo -e "    user: $dbuser database: $dbname"
@@ -88,7 +88,7 @@
   # Commit to Git Repo
   #######################################################
   function commit_changes {
-    dir = $1
+    dir= $1
 
     echo -e " .. Committing to local git repository at $dir"
 	datestamp=$(date +"%Y-%m-%d")
@@ -106,8 +106,8 @@
   # Push out to Master
   #######################################################
   function push_to_remote {
-    dir = $1
-    branch = $2
+    dir= $1
+    branch= $2
 
     echo -e " .. Pushing backup to $2 repo"
 	git push origin $2
