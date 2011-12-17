@@ -1,5 +1,5 @@
   #######################################################
-  # git-sitebackup v0.1
+  # git-sitebackup v0.2
   #######################################################
  
   # Usage: backup.sh webrootdir dbname dbuser dbpass 
@@ -13,6 +13,23 @@
   # All files are copied. 
   #
   # Useful to setup cron to run daily and do automatic backups to master repo.
+
+  # Usage:
+  # Backup files only locally:
+
+  > backup /path/to/dir
+
+  # Backup files locally and to remote origin
+
+  > backup /path/to/dir branch-name
+
+  # backup files and database locally
+
+  > backup /path/to/dir db-name db-user db-password
+
+  # backup files and database locally and to remote
+
+  > backup /path/to/dir db-name db-user db-password branch-name
 
 
 	
