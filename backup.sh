@@ -38,7 +38,7 @@
 	datestamp=$(date +"%Y-%m-%d")
 	timestamp=$(date +"%H:%M")
 	cd $dir
-	git add *
+	git add .
 	git commit -am "Backup created on $datestamp at $timestamp."
 	echo -e "    done\n"
   }
